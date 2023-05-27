@@ -1,7 +1,25 @@
-[gd_scene format=3 uid="uid://ctrb1hhhvh1eh"]
+[gd_scene load_steps=3 format=3 uid="uid://ctrb1hhhvh1eh"]
+
+[ext_resource type="Texture2D" uid="uid://dkqvl2k08o602" path="res://dungeonCrawlerAssets/baseClass-Sheet.png" id="1_bh78f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blqxy"]
+size = Vector2(12, 12)
 
 [node name="playerCharacters" type="Node"]
 
 [node name="playerOne" type="CharacterBody2D" parent="."]
+texture_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="playerOne"]
+position = Vector2(0, -10)
+texture = ExtResource("1_bh78f")
+hframes = 4
+vframes = 4
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerOne"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_blqxy")
 
 [node name="playerTwo" type="CharacterBody2D" parent="."]
+visible = false
