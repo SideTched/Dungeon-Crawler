@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://ctrb1hhhvh1eh"]
 
-[ext_resource type="Texture2D" uid="uid://dkqvl2k08o602" path="res://dungeonCrawlerAssets/baseClass-Sheet.png" id="1_bh78f"]
 [ext_resource type="Script" path="res://characterScenes/playerOne.gd" id="1_vb73j"]
+[ext_resource type="Texture2D" uid="uid://ik36rkdaoth4" path="res://dungeonCrawlerAssets/kightClass-Sheet.png" id="2_oxi6b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_blqxy"]
 size = Vector2(12, 12)
@@ -162,7 +162,7 @@ script = ExtResource("1_vb73j")
 
 [node name="Sprite2D" type="Sprite2D" parent="playerOne"]
 position = Vector2(0, -10)
-texture = ExtResource("1_bh78f")
+texture = ExtResource("2_oxi6b")
 hframes = 4
 vframes = 4
 frame = 3
