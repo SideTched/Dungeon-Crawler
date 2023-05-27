@@ -16,6 +16,8 @@ var angle = 0
 func _physics_process(delta: float) -> void:
 	if playerState == "move":
 		handleInput()
+		calculateMovementAngle()
+		updateAnimation()
 		
 		velocity = vectorDirection * delta * speedMultiplier
 		print(position)
@@ -25,9 +27,14 @@ func handleInput() -> void:
 	vectorDirection = Vector2(Input.get_joy_axis(0, JOY_AXIS_LEFT_X), Input.get_joy_axis(0, JOY_AXIS_LEFT_Y))
 	if zero.distance_to(abs(vectorDirection)) <= 0.4:
 		vectorDirection = zero
+	else:
+		calculateStringDirection()
 	
 func updateAnimation() -> void:
-	pass
+	if zero.distance_to(abs(vectorDirection)) >= 0.4:
+		animationPlayer.play("walk" + stringDirection)
+	else:
+		animationPlayer.play("idle" + stringDirection)
 
 func calculateMovementAngle() -> void:
 	var lenA = float(abs((velocity.x)))
