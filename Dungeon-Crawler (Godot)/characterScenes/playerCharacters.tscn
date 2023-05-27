@@ -1,25 +1,108 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctrb1hhhvh1eh"]
+[gd_scene load_steps=9 format=3 uid="uid://ctrb1hhhvh1eh"]
 
 [ext_resource type="Texture2D" uid="uid://dkqvl2k08o602" path="res://dungeonCrawlerAssets/baseClass-Sheet.png" id="1_bh78f"]
+[ext_resource type="Script" path="res://characterScenes/playerOne.gd" id="1_vb73j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_blqxy"]
 size = Vector2(12, 12)
+
+[sub_resource type="Animation" id="Animation_vc6er"]
+resource_name = "walkDown"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_puo0y"]
+resource_name = "walkLeft"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jipca"]
+resource_name = "walkRight"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_0ubuc"]
+resource_name = "walkUp"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_81m5i"]
+_data = {
+"walkDown": SubResource("Animation_vc6er"),
+"walkLeft": SubResource("Animation_puo0y"),
+"walkRight": SubResource("Animation_jipca"),
+"walkUp": SubResource("Animation_0ubuc")
+}
 
 [node name="playerCharacters" type="Node"]
 
 [node name="playerOne" type="CharacterBody2D" parent="."]
 texture_filter = 1
+script = ExtResource("1_vb73j")
 
 [node name="Sprite2D" type="Sprite2D" parent="playerOne"]
 position = Vector2(0, -10)
 texture = ExtResource("1_bh78f")
 hframes = 4
 vframes = 4
-frame = 2
+frame = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="playerOne"]
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_blqxy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="playerOne"]
+libraries = {
+"": SubResource("AnimationLibrary_81m5i")
+}
 
 [node name="playerTwo" type="CharacterBody2D" parent="."]
 visible = false
