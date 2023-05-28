@@ -10,7 +10,6 @@ const zero = Vector2.ZERO
 
 var stringDirection = "Down"
 var vectorDirection = Vector2.ZERO
-var movementTarget = self.position
 var angle = 0
 
 func _physics_process(delta: float) -> void:
@@ -20,7 +19,6 @@ func _physics_process(delta: float) -> void:
 		updateAnimation()
 		
 		velocity = vectorDirection * delta * speedMultiplier
-		print(position)
 		move_and_slide()
 	
 func handleInput() -> void:

@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://do3ae35juin3e"]
+
+[ext_resource type="Texture2D" uid="uid://dovo2rlvi4grj" path="res://dungeonCrawlerAssets/baseEnemy-Sheet.png" id="1_kifw7"]
+
+[node name="baseEnemy" type="CharacterBody2D"]
+texture_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -10)
+texture = ExtResource("1_kifw7")
+hframes = 4
+vframes = 4
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(4, -2)
+rect = Rect2(-10, -10, 12, 12)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, -6)
+target_position = Vector2(0, 300)
